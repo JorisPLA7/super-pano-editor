@@ -1,6 +1,7 @@
 appVersion ="0.2.3"
 rectFill='pink'
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
+githubpage = "https://github.com/Kouskali/super-pano-editor/"
 
 def donothing():
    filewin = Toplevel(root)
@@ -20,8 +21,10 @@ def refreshRotatif():
 	w.create_line(0, 300, 200, 0, fill="red", dash=(4, 4))
 	print("coucu")
     
-def webopen():
+def webhelp():
     webbrowser.open(helppage)
+def webgithub():
+    webbrowser.open(githubpage)
 ## init tkinter
 from tkinter import *
 import webbrowser 
@@ -58,8 +61,8 @@ editmenu.add_command(label="Select All", command=donothing)
 menubar.add_cascade(label="Obtenir de l'aide", menu=editmenu)
 '''
 helpmenu = Menu(menubar, tearoff=0)
-helpmenu.add_command(label="Version de l'application : {}".format(appVersion), command=donothing)
-helpmenu.add_command(label="Ouvrir une aide sur le web", command=webopen(helppage))
+helpmenu.add_command(label="Version de l'application : {}".format(appVersion), command=webgithub)
+helpmenu.add_command(label="Ouvrir une aide sur le web", command=webhelp)
 menubar.add_cascade(label="Aide", menu=helpmenu)
 
 root.config(menu=menubar)
