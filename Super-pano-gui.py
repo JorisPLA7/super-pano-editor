@@ -1,6 +1,6 @@
 appVersion ="0.2.3"
 rectFill='pink'
-helppage = "tuks.ovh/super-pano"
+helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 
 def donothing():
    filewin = Toplevel(root)
