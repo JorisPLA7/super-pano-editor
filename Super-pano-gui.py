@@ -19,16 +19,14 @@ def refreshRotatif():
 	rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
 	w.create_line(0, 0, 200, 300)
 	w.create_line(0, 300, 200, 0, fill="red", dash=(4, 4))
-	print("coucu")
+	print("coucou")
     
-def webhelp():
-    webbrowser.open(helppage)
-def webgithub():
-    webbrowser.open(githubpage)
+
 ## init tkinter
 from tkinter import *
-import webbrowser 
+# import webbrowser 
 from lib import graphiti
+from lib import web
 
 from tkinter.messagebox import askokcancel, askyesno,askquestion
 root=Tk()
@@ -38,38 +36,22 @@ root=Tk()
 
 ##Menubar
 menubar = Menu(root)
+
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Nouveau", command=donothing)
 filemenu.add_command(label="Ouvrir une sauvegarde", command=donothing)
 filemenu.add_command(label="Sauvegarder", command=donothing)
-
 filemenu.add_separator()
-
 filemenu.add_command(label="Quitter", command=root.destroy)
-menubar.add_cascade(label="File", menu=filemenu)
+menubar.add_cascade(label="Fichier", menu=filemenu)
 
-'''
-editmenu = Menu(menubar, tearoff=0)
-editmenu.add_command(label="Undo", command=donothing)
-
-editmenu.add_separator()
-
-editmenu.add_command(label="Cut", command=donothing)
-editmenu.add_command(label="Copy", command=donothing)
-editmenu.add_command(label="Paste", command=donothing)
-editmenu.add_command(label="Delete", command=donothing)
-editmenu.add_command(label="Select All", command=donothing)
-
-menubar.add_cascade(label="Obtenir de l'aide", menu=editmenu)
-'''
 helpmenu = Menu(menubar, tearoff=0)
-helpmenu.add_command(label="Version de l'application : {}".format(appVersion), command=webgithub)
-helpmenu.add_command(label="Ouvrir une aide sur le web", command=webhelp)
+helpmenu.add_command(label="Version de l'application : {}".format(appVersion), command=web.help)
+helpmenu.add_command(label="Ouvrir une aide sur le web", command=web.help)
 menubar.add_cascade(label="Aide", menu=helpmenu)
 
 devmenu = Menu(menubar, tearoff=0)
-devmenu.add_command(label="fonction joris", command=graphiti.joris)
-devmenu.add_command(label="Ouvrir une aide sur le web", command=webhelp)
+devmenu.add_command(label="fonction print test", command=graphiti.joris)
 menubar.add_cascade(label="Developpement", menu=devmenu)
 
 root.config(menu=menubar)
