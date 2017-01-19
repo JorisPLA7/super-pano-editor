@@ -28,6 +28,8 @@ def webgithub():
 ## init tkinter
 from tkinter import *
 import webbrowser 
+from lib import graphiti
+
 from tkinter.messagebox import askokcancel, askyesno,askquestion
 root=Tk()
 
@@ -65,6 +67,11 @@ helpmenu.add_command(label="Version de l'application : {}".format(appVersion), c
 helpmenu.add_command(label="Ouvrir une aide sur le web", command=webhelp)
 menubar.add_cascade(label="Aide", menu=helpmenu)
 
+devmenu = Menu(menubar, tearoff=0)
+devmenu.add_command(label="fonction joris", command=graphiti.joris)
+devmenu.add_command(label="Ouvrir une aide sur le web", command=webhelp)
+menubar.add_cascade(label="Developpement", menu=devmenu)
+
 root.config(menu=menubar)
 
 ##header
@@ -80,31 +87,35 @@ w = Canvas(aside, width=200, height=300)
 w.pack()
 
 
-##panneau trans
+##panneau  trans
 translatif = LabelFrame(root, text="Module translatif")
 translatif.pack(fill="both", expand="yes", side=TOP)
  
 left = Label(translatif, text="PEW")
 left.pack()
 
-##panneau rotat°
+
+##panneau  rotat°
 rotatif = LabelFrame(root, text="Module rotatif")
 rotatif.pack(fill="both", expand="yes", side=TOP)
  
 left = Label(rotatif, text="coup de 12")
 left.pack()
+    ##panneau  couleur select
+couleur = Frame(rotatif, relief=GROOVE)
+couleur.pack()
 
-lab = Label(rotatif, text="couleur rectangle :")
-lab.pack(side=LEFT, padx=80, pady=20)
-saisie=Entry(rotatif)
+coulLabel = Label(couleur, text="couleur rectangle :")
+coulLabel.pack(side=LEFT, padx=80, pady=20)
+saisie=Entry(couleur)
 saisie.pack(side=LEFT, padx=80,pady=20)
 
 rectFill = saisie.get()
 
 
-boutonQuestion = Button(rotatif, text="valider", command= refreshRotatif)
+boutonQuestion = Button(couleur, text="valider", command= refreshRotatif)
 boutonQuestion.pack(side=BOTTOM)
-
+    
 
 
 
