@@ -24,10 +24,12 @@ def refreshRotatif():
 
 ## init tkinter
 from tkinter import *
-# import webbrowser 
+import webbrowser
 from lib import graphiti
 from lib import web
-
+from lib import datasheets
+from tkinter.filedialog import *
+import pickle
 from tkinter.messagebox import askokcancel, askyesno,askquestion
 root=Tk()
 
@@ -39,7 +41,7 @@ menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Nouveau", command=donothing)
-filemenu.add_command(label="Ouvrir une sauvegarde", command=donothing)
+filemenu.add_command(label="Ouvrir une sauvegarde", command=datasheets.open)
 filemenu.add_command(label="Sauvegarder", command=donothing)
 filemenu.add_separator()
 filemenu.add_command(label="Quitter", command=root.destroy)
