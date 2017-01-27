@@ -1,5 +1,6 @@
 appVersion ="0.2.3"
 rectFill='pink'
+test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 githubpage = "https://github.com/Kouskali/super-pano-editor/"
 
@@ -9,22 +10,32 @@ def donothing():
    button.pack()
    print("#############################")
    
-def refreshRotatif():
+   
+def refreshCanvas(rectFill):
 	global rectange
     print("coucou")
-    rectFill = saisie.get()
     root.mainloop()
     w.delete()
     rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
 	rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
 	w.create_line(0, 0, 200, 300)
 	w.create_line(0, 300, 200, 0, fill="red", dash=(4, 4))
-	print("coucou")
-    
+	print("canvas actualisé avec succès !")
+
+def validation():
+	refreshCanvas(saisieRectFill.get())
+	
+# def refreshCanvas():
+#     w.delete()
+#     rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
+#     rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
+#     w.create_line(0, 0, 200, 300)
+#     w.create_line(0, 300, 200, 0, fill="red", dash=(4, 4))
+#     print("canvas actualisé avec succès")
+#     root.mainloop()
 
 ## init tkinter
 from tkinter import *
-import webbrowser
 from lib import graphiti
 from lib import web
 from lib import datasheets
@@ -41,7 +52,7 @@ menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Nouveau", command=donothing)
-filemenu.add_command(label="Ouvrir une sauvegarde", command=datasheets.open)
+filemenu.add_command(label="Ouvrir une sauvegarde", command=datasheets.getfilecontent)
 filemenu.add_command(label="Sauvegarder", command=donothing)
 filemenu.add_separator()
 filemenu.add_command(label="Quitter", command=root.destroy)
@@ -82,7 +93,7 @@ left.pack()
 ##panneau  rotat°
 rotatif = LabelFrame(root, text="Module rotatif")
 rotatif.pack(fill="both", expand="yes", side=TOP)
- 
+
 left = Label(rotatif, text="coup de 12")
 left.pack()
     ##panneau  couleur select
@@ -91,15 +102,15 @@ couleur.pack()
 
 coulLabel = Label(couleur, text="couleur rectangle :")
 coulLabel.pack(side=LEFT, padx=80, pady=20)
-saisie=Entry(couleur)
-saisie.pack(side=LEFT, padx=80,pady=20)
+saisieRectFill=Entry(couleur)
+saisieRectFill.pack(side=LEFT, padx=80,pady=20)
 
-rectFill = saisie.get()
+rectFill = saisieRectFill.get()
 
 
-boutonQuestion = Button(couleur, text="valider", command= refreshRotatif)
+boutonQuestion = Button(root, text="valider", command=validation)
 boutonQuestion.pack(side=BOTTOM)
-    
+
 
 
 
@@ -113,28 +124,11 @@ root.mainloop()
 lab = Label(root, text="Saisir votre texte ici :")
 lab.pack(side=LEFT, padx=80, pady=20)
 saisie=Entry(root)
-saisie.pack(side=LEFT, padx=80,pady=20)
+saisieRectFill.pack(side=LEFT, padx=80,pady=20)
 
 
-def comOk():
-    rep=askokcancel("fenêtre ok/cancel","Voulez-vous afficher la saisie ? ")
-    if rep == True:
-        print(" La valur saisie est :  "+saisie.get())
 
-def comQuestion():
-    rep = askquestion("fenêtre Nouvelle saisie", "voulez-vous continuer?")
-    if rep=='yes':
-        saisie.delete(0,END) # de char 0 à char final 
-    if rep=='no':
-        root.quit()
-    
-def comOui():
-    rep = askyesno("alors?", "voulez-vous contiuer ?",icon='warning')
-    if rep== False:
-        root.quit()
-        
-        
-        
+
 boutonOK = Button(root,text="Fen ok:annuler", command=comOk)
 boutonOK.pack(side=BOTTOM)
 boutonQuestion = Button(root, text="Fen ask question", command= comQuestion)
@@ -142,7 +136,7 @@ boutonQuestion.pack()
 boutonOui =Button(root, text = "fenêtre oui/non", command = comOui)
 boutonOui.pack()
 
-        
+
 
 '''
 
