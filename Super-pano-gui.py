@@ -1,9 +1,17 @@
-appVersion ="0.2.3"
+appVersion ="0.3 pickle branch"
 rectFill='pink'
 test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 githubpage = "https://github.com/Kouskali/super-pano-editor/"
-cachedata = "DEFAULTS ! ! !"
+
+cachedata = {
+"angleinter":    5,
+"angletotal":   35,
+"posx":   20,
+"versys":   appVersion,
+}
+
+
 def rfcbutton():
    cachedata = datasheets.readfilecontent()
    print(cachedata)
@@ -15,7 +23,7 @@ def donothing():
    filewin = Toplevel(root)
    button = Button(filewin, text="Do nothing button")
    button.pack()
-   print("#############################")
+   print("Fenêtre qui ne fait rien ouverte")
    
    
 def refreshCanvas(rectFill):
