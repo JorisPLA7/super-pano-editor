@@ -3,6 +3,13 @@ rectFill='pink'
 test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 githubpage = "https://github.com/Kouskali/super-pano-editor/"
+cachedata = "DEFAULTS ! ! !"
+def rfcbutton():
+   cachedata = datasheets.readfilecontent()
+   print(cachedata)
+   
+def wfcbutton():
+   datasheets.writefilecontent(cachedata)
 
 def donothing():
    filewin = Toplevel(root)
@@ -12,15 +19,15 @@ def donothing():
    
    
 def refreshCanvas(rectFill):
-	global rectange
-    print("coucou")
-    root.mainloop()
-    w.delete()
-    rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
-	rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
-	w.create_line(0, 0, 200, 300)
-	w.create_line(0, 300, 200, 0, fill="red", dash=(4, 4))
-	print("canvas actualisé avec succès !")
+   
+   print("coucou")
+   root.mainloop()
+   w.delete()
+   rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
+   rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
+   w.create_line(0, 0, 200, 300)
+   w.create_line(0, 300, 200, 0, fill="red", dash=(4, 4))
+   print("canvas actualisé avec succès !")
 
 def validation():
 	refreshCanvas(saisieRectFill.get())
@@ -52,8 +59,8 @@ menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Nouveau", command=donothing)
-filemenu.add_command(label="Ouvrir une sauvegarde", command=datasheets.getfilecontent)
-filemenu.add_command(label="Sauvegarder", command=donothing)
+filemenu.add_command(label="Ouvrir une sauvegarde", command=rfcbutton)
+filemenu.add_command(label="Sauvegarder", command=wfcbutton)
 filemenu.add_separator()
 filemenu.add_command(label="Quitter", command=root.destroy)
 menubar.add_cascade(label="Fichier", menu=filemenu)

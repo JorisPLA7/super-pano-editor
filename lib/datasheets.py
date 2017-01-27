@@ -1,15 +1,18 @@
 from tkinter.filedialog import *
 import pickle
 
-def getfilepath():
-    filepath = askopenfilename(title="Ouvrir un fichier de configuration",filetypes=[('configuration super pano','.supano'),('all files','.*')])
+def getfilepath(head):
+    filepath = askopenfilename(title=head,filetypes=[('configuration super pano','.supano'),('all files','.*')])
     return filepath
     
-def getfilecontent():
+def readfilecontent():
+
+    Fichier = open(getfilepath("Ouvrir un fichier de configuration"),'r')
+    cachedata = Fichier.read()
+    return cachedata
     
-    Fichier = open(getfilepath(),'r')
-    print(Fichier)
-    photo = PhotoImage(file=getfilepath())
-    canvas = Canvas(fenetre, width=photo.width(), height=photo.height(), bg="yellow")
-    canvas.create_image(0, 0, anchor=NW, image=photo)
-    canvas.pack()
+    
+def writefilecontent(cachedata):
+
+    Fichier = open(getfilepath("Enregistrer un fichier de configuration"),'w')
+    Fichier.write(cachedata)
