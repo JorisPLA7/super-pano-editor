@@ -1,28 +1,24 @@
 from tkinter.filedialog import *
 import pickle
 
-def getfilepath(head):
-    filepath = askopenfilename(title=head,filetypes=[('configuration super pano','.supano'),('all files','.*')])
-    return filepath
-    
 def readfilecontent():
-
-    Fichier = open(getfilepath("Ouvrir un fichier de configuration"),'r')
+    filepath = askopenfilename(title="Ouvrir une configuration",filetypes=[('configuration super pano','.supano'),('all files','.*')])
+    Fichier = open(filepath,'r')
     cachedata = Fichier.read()
     
     Fichier.close()
     return cachedata
     
 def writefilecontent(cachedata):
-
-    Fichier = open(getfilepath("Enregistrer un fichier de configuration"),'w')
+    filepath = askopenfilename(title="Sauveagrder une configuration",filetypes=[('configuration super pano','.supano'),('all files','.*')])
+    Fichier = open(filepath,'w')
     Fichier.write(cachedata)
     Fichier.close()
 
-def pick():
-    
+def pick(cachedata):
     with open('donnees', 'wb') as Fichier:
         mon_pickler = pickle.Pickler(Fichier)
-        mon_pickler.dump(score)
+        mon_pickler.dump(cachedata)
+    print('ecriture du fichier effectuée avec succès.')
 
-pick()
+#pick()

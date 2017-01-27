@@ -11,23 +11,23 @@ cachedata = {
 "versys":   appVersion,
 }
 
+
 def rfcbutton():
    cachedata = datasheets.readfilecontent()
    print(cachedata)
    
 def wfcbutton():
    datasheets.writefilecontent(cachedata)
-   
-def wbfcbutton():
-   datasheets.pick(cachedata)
 
 def donothing():
    filewin = Toplevel(root)
    button = Button(filewin, text="Do nothing button")
    button.pack()
    print("Fenêtre qui ne fait rien ouverte")
-      
-def refreshCanvas(rectFill):   
+   
+   
+def refreshCanvas(rectFill):
+   
    print("coucou")
    root.mainloop()
    w.delete()
@@ -80,7 +80,6 @@ menubar.add_cascade(label="Aide", menu=helpmenu)
 
 devmenu = Menu(menubar, tearoff=0)
 devmenu.add_command(label="fonction print test", command=graphiti.joris)
-devmenu.add_command(label="pick ", command=wbfcbutton)
 menubar.add_cascade(label="Developpement", menu=devmenu)
 
 root.config(menu=menubar)
