@@ -1,12 +1,37 @@
+<<<<<<< HEAD
 appVersion ="0.2.3"
+=======
+appVersion ="0.3.3 pickle branch"
+>>>>>>> parent of b0bf4b7... fini  :+1:
 rectFill='pink'
 test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 githubpage = "https://github.com/Kouskali/super-pano-editor/"
+<<<<<<< HEAD
 cachedata = "DEFAULTS ! ! !"
 def rfcbutton():
    cachedata = datasheets.readfilecontent()
    print(cachedata)
+=======
+
+cachedata = {
+"angleinter":    5,
+"angletotal":   35,
+"posx":   20,
+"versys":   appVersion,
+}
+
+def rfcbutton():
+   cachedata = datasheets.readfilecontent()
+   print(cachedata)
+
+def rbfcbutton():
+   cachedata = datasheets.pickread()
+   print(cachedata)
+   
+def wfcbutton():
+   datasheets.writefilecontent(cachedata)
+>>>>>>> parent of b0bf4b7... fini  :+1:
    
 def wfcbutton():
    datasheets.writefilecontent(cachedata)
@@ -72,6 +97,11 @@ menubar.add_cascade(label="Aide", menu=helpmenu)
 
 devmenu = Menu(menubar, tearoff=0)
 devmenu.add_command(label="fonction print test", command=graphiti.joris)
+<<<<<<< HEAD
+=======
+devmenu.add_command(label="pick write", command=wbfcbutton)
+devmenu.add_command(label="pick read", command=rbfcbutton)
+>>>>>>> parent of b0bf4b7... fini  :+1:
 menubar.add_cascade(label="Developpement", menu=devmenu)
 
 root.config(menu=menubar)
