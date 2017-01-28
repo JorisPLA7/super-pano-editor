@@ -1,26 +1,23 @@
-appVersion ="0.3.3 pickle branch"
+global appVersion
+appVersion = "0.3.3 pickle branch"
 rectFill='pink'
 test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 githubpage = "https://github.com/Kouskali/super-pano-editor/"
 
 cachedata = {
-"angleinter":    5,
-"angletotal":   35,
-"posx":   20,
+"angleinter":    0,
+"angletotal":   0,
+"posx":   0,
 "versys":   appVersion,
 }
 
-def rfcbutton():
-   cachedata = datasheets.readfilecontent()
-   print(cachedata)
-
 def rbfcbutton():
+   datatampon = cachedata
    cachedata = datasheets.pickread()
-   print(cachedata)
-   
-def wfcbutton():
-   datasheets.writefilecontent(cachedata)
+   if cachedata["versys"] == "fail!":
+      cachedata = cachedatatampon
+   print("nouvelles données en ram: {}".format(cachedata))
    
 def wbfcbutton():
    datasheets.pickwrite(cachedata)
@@ -63,8 +60,8 @@ menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Nouveau", command=donothing)
-filemenu.add_command(label="Ouvrir une sauvegarde", command=rfcbutton)
-filemenu.add_command(label="Sauvegarder", command=wfcbutton)
+filemenu.add_command(label="Ouvrir une sauvegarde", command=rbfcbutton)
+filemenu.add_command(label="Sauvegarder", command=wbfcbutton)
 filemenu.add_separator()
 filemenu.add_command(label="Quitter", command=root.destroy)
 menubar.add_cascade(label="Fichier", menu=filemenu)
@@ -75,9 +72,9 @@ helpmenu.add_command(label="Ouvrir une aide sur le web", command=web.help)
 menubar.add_cascade(label="Aide", menu=helpmenu)
 
 devmenu = Menu(menubar, tearoff=0)
-devmenu.add_command(label="fonction print test", command=graphiti.joris)
-devmenu.add_command(label="pick write", command=wbfcbutton)
-devmenu.add_command(label="pick read", command=rbfcbutton)
+# devmenu.add_command(label="fonction print test", command=graphiti.joris)
+# devmenu.add_command(label="pick write", command=wbfcbutton)
+# devmenu.add_command(label="pick read", command=rbfcbutton)
 menubar.add_cascade(label="Developpement", menu=devmenu)
 
 root.config(menu=menubar)
