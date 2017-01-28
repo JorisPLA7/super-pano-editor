@@ -1,3 +1,5 @@
+##SEE GLP LISCENCE ........ Joris Placette
+
 global appVersion
 appVersion = "0.3.3 revival"
 rectFill='pink'

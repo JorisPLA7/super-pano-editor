@@ -31,3 +31,9 @@ def pickread():
 		print("lecture du fichier  {}  effectuée avec succès !".format(filepath))
 	return cachedata
 #pick()
+
+
+
+
+
+
