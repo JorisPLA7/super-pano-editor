@@ -1,4 +1,4 @@
-##SEE GLP LISCENCE ........ Joris Placette
+##PROGRAMME SOUS LISCENCE G.P.L ........ Joris Placette ........ 2017
 
 global appVersion
 appVersion = "0.3.3 revival"
