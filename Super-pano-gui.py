@@ -1,4 +1,4 @@
-appVersion ="0.3.1 pickle branch"
+appVersion ="0.3.2 pickle branch"
 rectFill='pink'
 test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
@@ -19,7 +19,7 @@ def wfcbutton():
    datasheets.writefilecontent(cachedata)
    
 def wbfcbutton():
-   datasheets.pick(cachedata)
+   datasheets.pickwrite(cachedata)
 
 def donothing():
    filewin = Toplevel(root)
