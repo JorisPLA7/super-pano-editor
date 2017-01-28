@@ -26,9 +26,16 @@ def writefilecontent(cachedata):
 
 
 def pickwrite(cachedata):
-    with open('donnees', 'wb') as Fichier:
-        mon_pickler = pickle.Pickler(Fichier)
-        mon_pickler.dump(cachedata)
-    print('ecriture du fichier effectuée avec succès.')
+	filepath = asksaveasfilename(title="Sauveagrder une configuration",filetypes=[('configuration super pano','.supano'),('all files','.*')])
+	with open(filepath, 'wb') as Fichier:
+		mon_pickler = pickle.Pickler(Fichier)
+		mon_pickler.dump(cachedata)
+	print('ecriture du fichier effectuée avec succès.')
 
+
+def pickread():
+	filepath = askopenfilename(title="Ouvrir une configuration",filetypes=[('configuration super pano','.supano'),('all files','.*')])
+	Fichier = open(filepath, 'rb') 
+	cachedata = pickle.load(Fichier) 
+	return cachedata
 #pick()

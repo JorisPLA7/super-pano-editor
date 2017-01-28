@@ -1,4 +1,4 @@
-appVersion ="0.3.2 pickle branch"
+appVersion ="0.3.3 pickle branch"
 rectFill='pink'
 test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
@@ -13,6 +13,10 @@ cachedata = {
 
 def rfcbutton():
    cachedata = datasheets.readfilecontent()
+   print(cachedata)
+
+def rbfcbutton():
+   cachedata = datasheets.pickread()
    print(cachedata)
    
 def wfcbutton():
@@ -40,14 +44,6 @@ def refreshCanvas(rectFill):
 def validation():
 	refreshCanvas(saisieRectFill.get())
 	
-# def refreshCanvas():
-#     w.delete()
-#     rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
-#     rectangle = w.create_rectangle(0, 0, 200, 300, fill=rectFill)
-#     w.create_line(0, 0, 200, 300)
-#     w.create_line(0, 300, 200, 0, fill="red", dash=(4, 4))
-#     print("canvas actualisé avec succès")
-#     root.mainloop()
 
 ## init tkinter
 from tkinter import *
@@ -80,7 +76,8 @@ menubar.add_cascade(label="Aide", menu=helpmenu)
 
 devmenu = Menu(menubar, tearoff=0)
 devmenu.add_command(label="fonction print test", command=graphiti.joris)
-devmenu.add_command(label="pick ", command=wbfcbutton)
+devmenu.add_command(label="pick write", command=wbfcbutton)
+devmenu.add_command(label="pick read", command=rbfcbutton)
 menubar.add_cascade(label="Developpement", menu=devmenu)
 
 root.config(menu=menubar)
