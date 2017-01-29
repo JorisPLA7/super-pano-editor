@@ -14,6 +14,7 @@ cachedata = {
 "versys":   appVersion,
 }
 
+##buttons
 def rbfcbutton():
    global cachedata
    datatampon = cachedata
@@ -23,14 +24,25 @@ def rbfcbutton():
    print("nouvelles données en ram: {}".format(cachedata))
    
 def wbfcbutton():
-   datasheets.pickwrite(cachedata)
+   if int(saisieangleinter.get()) > 50:
+      guierror("l'angle entre 2 position doit être compris entre 0 et 50° !")
+   else:
+      pulldata()
+      datasheets.pickwrite(cachedata)
 
+##data treatment
+def pulldata():
+   cachedata["angletotal"] = saisieangletotal.get()
+   cachedata["angleinter"] = saisieangleinter.get()   
+   cachedata["posx"] = saisieposx.get()
+
+##external fcts
 def donothing():
    filewin = Toplevel(root)
    button = Button(filewin, text="Do nothing button")
    button.pack()
    print("Fenêtre qui ne fait rien ouverte")
-      
+   
 def refreshCanvas(rectFill):   
    print("coucou")
    root.mainloop()
@@ -43,7 +55,20 @@ def refreshCanvas(rectFill):
 
 def validation():
 	refreshCanvas(saisieRectFill.get())
-	
+
+##gui
+def guierror(reason):
+   errorframe = LabelFrame(root, text="Il y a un problème :'(  !", fg="red" )
+   errorframe.pack(fill="both", expand="no", side=BOTTOM)
+   
+   destroybutton= Button(errorframe, text="x", command=errorframe.destroy)
+   destroybutton.pack(side=LEFT)
+   
+   left = Label(errorframe, text=reason, fg="red")
+   left.pack()
+   
+   root.mainloop()
+ 
 
 ## init tkinter
 from tkinter import *
@@ -105,10 +130,10 @@ translatif.pack(fill="both", expand="yes", side=TOP)
 left = Label(translatif, text="Position linéaire :")
 left.pack()
 
-saisieposx = Spinbox(translatif, from_=0, to=100)
+saisieposx = Spinbox(translatif, from_=0, to=100,)
 saisieposx.pack()
 
-posx = saisieposx.get()
+#posx = saisieposx.get()
 
 ##panneau  rotat°
 rotatif = LabelFrame(root, text="Module rotatif")
@@ -123,7 +148,7 @@ titreangleinter.pack()
 
 saisieangleinter = Spinbox(subrotatif1, from_=0, to=50)
 saisieangleinter.pack()
-cachedata["angleinter"] = saisieangleinter.get()   
+#cachedata["angleinter"] = saisieangleinter.get()   
 
    ## pann subrotat2
 subrotatif2 = Frame(rotatif)
@@ -134,9 +159,10 @@ titreangletotal.pack()
 
 saisieangletotal = Spinbox(subrotatif2, from_=0, to=50)
 saisieangletotal.pack()
-cachedata["angletotal"] = saisieangletotal.get()
 
-    ##panneau  couleur select
+#cachedata["angletotal"] = saisieangletotal.get()
+
+   ##panneau  couleur select
 couleur = Frame(rotatif, relief=GROOVE)
 couleur.pack()
 
@@ -148,37 +174,10 @@ saisieRectFill.pack(side=LEFT, padx=80,pady=20)
 rectFill = saisieRectFill.get()
 
 
-boutonQuestion = Button(root, text="valider", command=validation)
-boutonQuestion.pack(side=BOTTOM)
-
-
-
-
-
-
+savebutton= Button(root, text="enregistrer", command=wbfcbutton)
+savebutton.pack()
 
 root.mainloop()
-
-
-'''
-lab = Label(root, text="Saisir votre texte ici :")
-lab.pack(side=LEFT, padx=80, pady=20)
-saisie=Entry(root)
-saisieRectFill.pack(side=LEFT, padx=80,pady=20)
-
-
-
-
-boutonOK = Button(root,text="Fen ok:annuler", command=comOk)
-boutonOK.pack(side=BOTTOM)
-boutonQuestion = Button(root, text="Fen ask question", command= comQuestion)
-boutonQuestion.pack()
-boutonOui =Button(root, text = "fenêtre oui/non", command = comOui)
-boutonOui.pack()
-
-
-
-'''
 
 
 
