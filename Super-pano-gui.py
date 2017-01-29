@@ -1,7 +1,7 @@
 ##PROGRAMME SOUS LISCENCE G.P.L ........ Joris Placette ........ 2017
 
 global appVersion
-appVersion = "0.3.3 revival"
+appVersion = "0.3.4 revival"
 rectFill='pink'
 test = 121212
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
@@ -55,6 +55,9 @@ import pickle
 from tkinter.messagebox import askokcancel, askyesno,askquestion
 root=Tk()
 
+root.wm_title('Super Pano GUI')
+root.wm_iconbitmap('ressources\supano.ico')
+
 
 
 
@@ -99,16 +102,40 @@ w.pack()
 translatif = LabelFrame(root, text="Module translatif")
 translatif.pack(fill="both", expand="yes", side=TOP)
  
-left = Label(translatif, text="PEW")
+left = Label(translatif, text="Position linéaire :")
 left.pack()
 
+saisieposx = Spinbox(translatif, from_=0, to=100)
+saisieposx.pack()
+
+posx = saisieposx.get()
 
 ##panneau  rotat°
 rotatif = LabelFrame(root, text="Module rotatif")
 rotatif.pack(fill="both", expand="yes", side=TOP)
 
-left = Label(rotatif, text="coup de 12")
-left.pack()
+   ## pann subrotat1
+subrotatif1 = Frame(rotatif)
+subrotatif1.pack(fill="both", expand="yes", side=TOP)
+   
+titreangleinter = Label(subrotatif1, text="angle entre deux positions (degrés) :")
+titreangleinter.pack()
+
+saisieangleinter = Spinbox(subrotatif1, from_=0, to=50)
+saisieangleinter.pack()
+cachedata["angleinter"] = saisieangleinter.get()   
+
+   ## pann subrotat2
+subrotatif2 = Frame(rotatif)
+subrotatif2.pack(fill="both", expand="yes", side=TOP)
+   
+titreangletotal = Label(subrotatif2, text="angle total du mouvement (degrés) :")
+titreangletotal.pack()
+
+saisieangletotal = Spinbox(subrotatif2, from_=0, to=50)
+saisieangletotal.pack()
+cachedata["angletotal"] = saisieangletotal.get()
+
     ##panneau  couleur select
 couleur = Frame(rotatif, relief=GROOVE)
 couleur.pack()
