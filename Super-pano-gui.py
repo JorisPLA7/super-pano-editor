@@ -40,6 +40,10 @@ def verifbutton():
    if int(saisieangletotal.get()) < 0 or int(saisieangletotal.get()) > 720 :
       guimessage("red", "Il y a un problème :'(  !", "l'angle total doit être compris entre 0 et 720° !")
       nberror +=1
+   
+   if int(saisieposx.get()) < 0 or int(saisieposx.get()) > posxmax:
+      guimessage("red", "Il y a un problème :'(  !", "La position linéaire doit être comprise entre 0 et {} !".format(posxmax))
+      nberror +=1
 
    if nberror == 0:
       pulldata()
@@ -138,9 +142,9 @@ header.pack(fill="both", expand="no")
 ##aside frame
 aside = Frame(root)
 aside.pack(side=LEFT)
-
+   
 ##init canvas
-w = Canvas(aside, width=200, height=200)
+w = Canvas(aside, width=200, height=300)
 w.pack()
 
 def refreshcanvas(cachedata):   
@@ -206,7 +210,8 @@ saisieangletotal.pack()
 checkbutton= Button(root, text="Verifier", command=verifbutton)
 checkbutton.pack()
 
-verifbutton()
+
+#verifbutton()
 root.mainloop()
 
 
