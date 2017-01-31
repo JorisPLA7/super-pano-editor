@@ -7,9 +7,7 @@ global palette
 global posxmax 
 
 posxmax = 200
-appVersion = "0.3.5"
-rectFill='pink'
-test = 121212
+appVersion = "0.3.50007"
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 githubpage = "https://github.com/Kouskali/super-pano-editor/"
 
@@ -32,10 +30,11 @@ def rbfcbutton():
 def wbfcbutton():
    datasheets.pickwrite(cachedata)
    
+
 def verifbutton():
    nberror = 0
    if int(saisieangleinter.get()) < 0 or int(saisieangleinter.get()) > 50:
-      guimessage("red", "Il y a un problème :'(  !", "l'angle entre 2 position doit être compris entre 0 et 50° !")
+      guimessage("red", "Il y a un problème :'(  !", "l'angle entre 2 positions doit être compris entre 0 et 50° !")
       nberror +=1
    if int(saisieangletotal.get()) < 0 or int(saisieangletotal.get()) > 720 :
       guimessage("red", "Il y a un problème :'(  !", "l'angle total doit être compris entre 0 et 720° !")
@@ -92,6 +91,9 @@ def guivalidation():
    
    savebutton= Button(validationframe, text="enregistrer", command=wbfcbutton, fg="green")
    savebutton.pack()
+   
+   desc= Label(validationframe, text="posx: {}  angle total: {}  angle intermidiaire: {}".format(cachedata["posx"],cachedata["angletotal"],cachedata["angleinter"]), fg="green")
+   desc.pack()
    root.mainloop()
 
 
@@ -148,7 +150,7 @@ w = Canvas(aside, width=200, height=300)
 w.pack()
 
 def refreshcanvas(cachedata):   
-   w.delete()
+   w.delete("all")
    rectangle = w.create_rectangle(10, 30, 190, 40, fill="white")
    
    posxdisp = int(int(cachedata["posx"]) / posxmax * 180 +10)
