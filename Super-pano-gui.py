@@ -25,13 +25,13 @@ def rbfcbutton():
    
 def wbfcbutton():
    if int(saisieangleinter.get()) < 0 or int(saisieangleinter.get()) > 50:
-      guimessage("red","l'angle entre 2 position doit être compris entre 0 et 50° !")
+      guimessage("red", "Il y a un problème :'(  !", "l'angle entre 2 position doit être compris entre 0 et 50° !")
    else:
       pulldata()
       datasheets.pickwrite(cachedata)
       
    if int(saisieangletotal.get()) < 0 or int(saisieangletotal.get()) > 720 :
-      guimessage("red","l'angle total doit être compris entre 0 et 720° !")
+      guimessage("red", "Il y a un problème :'(  !", "l'angle total doit être compris entre 0 et 720° !")
    else:
       pulldata()
       datasheets.pickwrite(cachedata)
@@ -63,8 +63,9 @@ def validation():
 	refreshCanvas(saisieRectFill.get())
 
 ##gui
-def guimessage(color, reason):
-   messageframe = LabelFrame(root, text="Il y a un problème :'(  !", fg=color )
+def guimessage(color, context, reason):
+   if color == "red":
+   messageframe = LabelFrame(root, text=context, fg=color )
    messageframe.pack(fill="both", expand="no", side=BOTTOM)
    
    destroybutton= Button(messageframe, text="x", command=messageframe.destroy)
