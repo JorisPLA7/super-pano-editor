@@ -7,7 +7,7 @@ global palette
 global posxmax 
 
 posxmax = 200
-appVersion = "0.3.50007"
+appVersion = "0.3.5.MichelS"
 helppage = "https://github.com/Kouskali/super-pano-editor/blob/master/README.md"
 githubpage = "https://github.com/Kouskali/super-pano-editor/"
 
@@ -117,7 +117,7 @@ root.wm_iconbitmap('ressources\supano.ico')
 menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0)
-filemenu.add_command(label="Nouveau", command=donothing)
+
 filemenu.add_command(label="Ouvrir une sauvegarde", command=rbfcbutton)
 filemenu.add_command(label="Sauvegarder sans validation", command=forcesave)
 filemenu.add_separator()
