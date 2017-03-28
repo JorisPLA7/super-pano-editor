@@ -4,7 +4,7 @@ global appVersion
 
 global palette
 
-global posxmax 
+global posxmax
 
 comValue =0
 posxmax = 200
@@ -30,7 +30,7 @@ def rbfcbutton():
 
 def wbfcbutton():
    datasheets.pickwrite(cacheData)
-   
+
 
 def verifbutton():
    nberror = 0
@@ -40,7 +40,7 @@ def verifbutton():
    if int(saisieangletotal.get()) < 0 or int(saisieangletotal.get()) > 720 :
       guimessage("red", "Il y a un problème :'(  !", "l'angle total doit être compris entre 0 et 720° !")
       nberror +=1
-   
+
    if int(saisieposx.get()) < 0 or int(saisieposx.get()) > posxmax:
       guimessage("red", "Il y a un problème :'(  !", "La position linéaire doit être comprise entre 0 et {} !".format(posxmax))
       nberror +=1
@@ -49,7 +49,7 @@ def verifbutton():
       pulldata()
       refreshcanvas(cacheData)
       guivalidation()
-      
+
 def serialsetbbutton():
    serializer.establish(comValue, cacheData)
 def serialsendbutton():
@@ -58,7 +58,7 @@ def serialsendbutton():
 ##data treatment
 def pulldata():
    cacheData["angletotal"] = saisieangletotal.get()
-   cacheData["angleinter"] = saisieangleinter.get()   
+   cacheData["angleinter"] = saisieangleinter.get()
    cacheData["posx"] = saisieposx.get()
 
 ##external fcts
@@ -72,33 +72,33 @@ def forcesave():
    print("tentative de sauvegarde forcée")
    pulldata()
    wbfcbutton()
-   
-   
+
+
 
 
 ##gui refreshers
 def guimessage(color, context, reason):
    messageframe = LabelFrame(root, text=context, fg=color )
    messageframe.pack(fill="both", expand="no", side=BOTTOM)
-   
+
    destroybutton= Button(messageframe, text="x", command=messageframe.destroy)
    destroybutton.pack(side=LEFT)
-   
+
    left = Label(messageframe, text=reason, fg=color)
    left.pack()
-   
+
    root.mainloop()
 
 def guivalidation():
    validationframe = LabelFrame(root, text="Tout semble correct :) ", fg="green" )
    validationframe.pack(fill="both", expand="no", side=BOTTOM)
-   
+
    destroybutton= Button(validationframe, text="x", command=validationframe.destroy)
    destroybutton.pack(side=LEFT)
-   
+
    savebutton= Button(validationframe, text="enregistrer", command=wbfcbutton, fg="green")
    savebutton.pack()
-   
+
    desc= Label(validationframe, text="posx: {}  angle total: {}  angle intermidiaire: {}".format(cacheData["posx"],cacheData["angletotal"],cacheData["angleinter"]), fg="green")
    desc.pack()
    root.mainloop()
@@ -168,21 +168,21 @@ header.pack(fill="both", expand="no")
 ##aside frame
 aside = Frame(root)
 aside.pack(side=LEFT)
-   
+
 ##init canvas
 w = Canvas(aside, width=200, height=300)
 w.pack()
 
-def refreshcanvas(cacheData):   
+def refreshcanvas(cacheData):
    w.delete("all")
    rectangle = w.create_rectangle(10, 30, 190, 40, fill="white")
-   
+
    posxdisp = int(int(cacheData["posx"]) / posxmax * 180 +10)
-   
+
    w.create_line(posxdisp, 25, posxdisp, 45)
    angletotrest = cacheData["angletotal"]
    angleinterrest = cacheData["angleinter"]
-   
+
    coord1 = 1, 50, 200, 170
    coord2 = 1, 60, 190, 160
    arctot = w.create_arc(coord1, start=10, extent=cacheData["angletotal"], fill="white")
@@ -193,7 +193,7 @@ def refreshcanvas(cacheData):
 ##panneau  trans
 translatif = LabelFrame(root, text="Module translatif")
 translatif.pack(fill="both", expand="yes", side=TOP)
- 
+
 left = Label(translatif, text="Position linéaire :")
 left.pack()
 
@@ -209,18 +209,18 @@ rotatif.pack(fill="both", expand="yes", side=TOP)
    ## pann subrotat1
 subrotatif1 = Frame(rotatif)
 subrotatif1.pack(fill="both", expand="yes", side=TOP)
-   
+
 titreangleinter = Label(subrotatif1, text="angle entre deux positions (degrés) :")
 titreangleinter.pack()
 
 saisieangleinter = Spinbox(subrotatif1, from_=0, to=50)
 saisieangleinter.pack()
-#cacheData["angleinter"] = saisieangleinter.get()   
+#cacheData["angleinter"] = saisieangleinter.get()
 
    ## pann subrotat2
 subrotatif2 = Frame(rotatif)
 subrotatif2.pack(fill="both", expand="yes", side=TOP)
-   
+
 titreangletotal = Label(subrotatif2, text="angle total du mouvement (degrés) :")
 titreangletotal.pack()
 
@@ -239,9 +239,3 @@ checkbutton.pack()
 
 #verifbutton()
 root.mainloop()
-
-
-
-
-
-
