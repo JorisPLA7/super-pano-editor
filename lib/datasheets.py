@@ -1,3 +1,4 @@
+
 from tkinter.filedialog import *
 import pickle
 
@@ -8,16 +9,16 @@ def pickwrite(cacheData):
 			mon_pickler = pickle.Pickler(Fichier)
 			mon_pickler.dump(cacheData)
 		print('ecriture du fichier  {}  effectuée avec succès.'.format(filepath))
-		
+
 	except:
 		print("ecriture du fichier  {}  impossible !".format(filepath))
-	
+
 def pickread():
 	global appVersion
 	try:
 		filepath = askopenfilename(title="Ouvrir une configuration",filetypes=[('configuration super pano','.supano'),('all files','.*')])
-		Fichier = open(filepath, 'rb') 
-		cacheData = pickle.load(Fichier) 
+		Fichier = open(filepath, 'rb')
+		cacheData = pickle.load(Fichier)
 		Fichier.close()
 	except:
 		print("lecture du fichier  {}  impossible".format(filepath))
@@ -31,9 +32,3 @@ def pickread():
 		print("lecture du fichier  {}  effectuée avec succès !".format(filepath))
 	return cacheData
 #pick()
-
-
-
-
-
-

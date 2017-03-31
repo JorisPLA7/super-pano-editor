@@ -1,5 +1,5 @@
 ##PROGRAMME SOUS LISCENCE G.P.L ........ Joris Placette ........ 2017
-
+ 
 global appVersion
 
 global palette
