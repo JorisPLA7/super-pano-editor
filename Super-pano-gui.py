@@ -31,7 +31,7 @@ def rbfcbutton():  #fonction appelée pour ouvrir un fichier existant
    #saisieangleinter.icursor(cacheData["angleinter"])
    #saisieposx.icursor(cacheData["posx"])
 
-def wbfcbutton():
+def wbfcbutton(): #fonction appelée pour écrire les valeurs dans un fichier
    datasheets.pickwrite(cacheData) # se référer à datasheets.py
 
 
@@ -77,7 +77,7 @@ def forcesave():
    pulldata()
    wbfcbutton()
 
-##gui refreshers
+#gui refreshers
 def guimessage(color, context, reason):
    messageframe = LabelFrame(root, text=context, fg=color )
    messageframe.pack(fill="both", expand="no", side=BOTTOM)
@@ -90,6 +90,7 @@ def guimessage(color, context, reason):
 
    root.mainloop()
 
+#
 def guivalidation():
    validationframe = LabelFrame(root, text="Tout semble correct :) ", fg="green" )
    validationframe.pack(fill="both", expand="no", side=BOTTOM)
@@ -107,44 +108,44 @@ def guivalidation():
 
 ## init tkinter
 #importation des bibliotheques pyhton
-try:
+try: #schéma classique verbeux, afin que l'utilisateur sache quels fichiers sont manquants
     from tkinter import *
-    print("bibliothèque importée avec succès tkinter")
+    print("bibliothèque importée avec succès :  tkinter")
 except:
     print("Impossible d'importer la bibliothèque :  tkinter")
 try:
     from tkinter.filedialog import *
-    print("bibliothèque importée avec succès tkinter")
+    print("bibliothèque importée avec succès :  tkinter")
 except:
     print("Impossible d'importer la bibliothèque :  tkinter")
 try:
     from tkinter.messagebox import askokcancel, askyesno,askquestion
-    print("bibliothèque importée avec succès tkinter")
+    print("bibliothèque importée avec succès :  tkinter")
 except:
     print("Impossible d'importer la bibliothèque :  tkinter")
 try:
     import pickle
-    print("bibliothèque importée avec succès pickle")
+    print("bibliothèque importée avec succès :  pickle")
 except:
     print("Impossible d'importer la bibliothèque :  pickle")
 try:
     from lib import graphiti
-    print("bibliothèque importée avec succès lib\graphiti")
+    print("bibliothèque importée avec succès :  lib\graphiti")
 except:
     print("Impossible d'importer la bibliothèque :  lib\graphiti")
 try:
     from lib import web
-    print("bibliothèque importée avec succès lib\web")
+    print("bibliothèque importée avec succès :  lib\web")
 except:
     print("Impossible d'importer la bibliothèque :  lib\web")
 try:
     from lib import datasheets
-    print("bibliothèque importée avec succès lib\datasheets")
+    print("bibliothèque importée avec succès :  lib\datasheets")
 except:
     print("Impossible d'importer la bibliothèque :  lib\datasheets")
 try:
     from lib import serializer
-    print("bibliothèque importée avec succès lib\serializer")
+    print("bibliothèque importée avec succès :  lib\serializer")
 except:
     print("Impossible d'importer la bibliothèque :  lib\ser")
 root=Tk() #création de la fenêtre tkinter racine
@@ -211,7 +212,7 @@ def refreshcanvas(cacheData):
    arctot = w.create_arc(coord1, start=10, extent=cacheData["angletotal"], fill="white") #arc de cercle dont l'angle d'extension est proportionnel à : angle renseigné [360]
    arcinter = w.create_arc(coord2, start=20, extent=cacheData["angleinter"], fill="black")
 
-   print("canvas actualisé avec succès !")
+   print("canvas actualisé avec succès :  !")
 
 ##panneau  translation
 translatif = LabelFrame(root, text="Module translatif")
