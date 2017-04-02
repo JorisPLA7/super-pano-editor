@@ -18,13 +18,12 @@ cacheData = {
 "posx":   0,
 "versys":   appVersion,
 }# cachedata , données fournies par l'utilisateur, en attente d'être envoyées à la carte ou enregistrées
-
 ##boutons
 def rbfcbutton():  #fonction appelée pour ouvrir un fichier existant
    global cacheData
    datatampon = cacheData
    cacheData = datasheets.pickread()
-   if cacheData["versys"] == "fail!":
+   if cacheData["versys"] == "fail!": ##
       print("Erreur: Fichier ouvert mais lu sans succès")
    print("nouvelles données en ram: {}".format(cacheData))
    #saisieangletotal.icursor(cacheData["angletotal"])
@@ -33,7 +32,6 @@ def rbfcbutton():  #fonction appelée pour ouvrir un fichier existant
 
 def wbfcbutton(): #fonction appelée pour écrire les valeurs dans un fichier
    datasheets.pickwrite(cacheData) # se référer à datasheets.py
-
 
 def verifbutton(): #vérification des données fournies par l'utilisateur
    nberror = 0
@@ -178,9 +176,6 @@ helpmenu.add_command(label="Ouvrir une aide sur le web", command=web.help)
 menubar.add_cascade(label="Aide", menu=helpmenu)
 
 devmenu = Menu(menubar, tearoff=0) #sous menu
-# devmenu.add_command(label="fonction print test", command=graphiti.joris)
-# devmenu.add_command(label="pick write", command=verifbutton)
-# devmenu.add_command(label="pick read", command=rbfcbutton)
 menubar.add_cascade(label="Developpement", menu=devmenu)
 
 root.config(menu=menubar)
@@ -207,8 +202,8 @@ def refreshcanvas(cacheData):
    angletotrest = cacheData["angletotal"]
    angleinterrest = cacheData["angleinter"]
 
-   coord1 = 1, 50, 200, 170
-   coord2 = 1, 60, 190, 160
+   coord1 = 2, 50, 200, 250 ##xcoinsupp, ycoinsupp, xcoininf, ycoininf
+   coord2 = 2, 50, 190, 250 ##xcoinsupp, ycoinsupp, xcoininf, ycoininf
    arctot = w.create_arc(coord1, start=10, extent=cacheData["angletotal"], fill="white") #arc de cercle dont l'angle d'extension est proportionnel à : angle renseigné [360]
    arcinter = w.create_arc(coord2, start=20, extent=cacheData["angleinter"], fill="black")
 
