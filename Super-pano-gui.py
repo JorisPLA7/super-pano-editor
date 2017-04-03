@@ -1,6 +1,6 @@
-##PROGRAMME SOUS LISCENCE G.P.L ........ Joris Placette ........ 2017
+##PROGRAMME SOUS LICENSE G.P.L ........ Joris Placette ........ 2017
 
-global appVersion #Vaiiable contenant le numero de version du porgramme (écrit avec les données)
+global appVersion #Variable contenant le numero de version du porgramme (écrit avec les données)
 
 global palette
 
@@ -26,9 +26,6 @@ def rbfcbutton():  #fonction appelée pour ouvrir un fichier existant
    if cacheData["versys"] == "fail!": ##
       print("Erreur: Fichier ouvert mais lu sans succès")
    print("nouvelles données en ram: {}".format(cacheData))
-   #saisieangletotal.icursor(cacheData["angletotal"])
-   #saisieangleinter.icursor(cacheData["angleinter"])
-   #saisieposx.icursor(cacheData["posx"])
 
 def wbfcbutton(): #fonction appelée pour écrire les valeurs dans un fichier
    datasheets.pickwrite(cacheData) # se référer à datasheets.py
