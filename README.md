@@ -6,3 +6,13 @@ Pour executer le programme nous avec besion des extensions suivantes :
 <ul>
 <li>Tkinter</li>
 <li>pickle</li>
+</ul>
+
+
+Graphical configuration software for a prototype of a pivoting tripod. Realized as part of a school project.
+
+To run the program you need the following extensions:
+<ul>
+<li>Tkinter</li>
+<li>pickle</li>
+</ul>
